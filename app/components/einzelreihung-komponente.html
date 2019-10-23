@@ -1,0 +1,17 @@
+<style>
+    einzelreihung-komponente h4{
+        width: 20em;
+    }
+</style>
+<div layout="row">
+    <h4>{{$ctrl.sportlerInnenName}}</h4>
+    <div>
+        <md-radio-group ng-model="$ctrl.platz" layout="row" ng-hide="$ctrl.platz" ng-change="$ctrl.remove()"><!--change geht nur mit ngModel-->
+            <md-radio-button ng-repeat="p in $ctrl.plaetze" ng-value="p"><h6>{{p}}</h6></md-radio-button>
+        </md-radio-group>
+        <div ng-show="$ctrl.platz">
+            Platz {{$ctrl.platz}}
+            <md-button ng-click="$ctrl.add()">Ändern</md-button>
+        </div>
+    </div>
+</div>
