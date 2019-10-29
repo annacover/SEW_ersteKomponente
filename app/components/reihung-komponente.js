@@ -20,7 +20,14 @@ app.controller("ReihungsController", function ($log) {
         this.plaetze = [];
         for (let i = 0; i < this.ausgegebeneTeilnehmer.length; i++) {
             this.plaetze.push(i + 1);
-        }
+        };
+    this.remove = (platz) => {
+        this.plaetze.splice(this.plaetze.indexOf(platz), 1)
+    };
+    this.add = (platz) => {
+        this.plaetze.push(platz);
+        this.plaetze.sort();
+    };
     //}
 
 

@@ -3,21 +3,26 @@ app.component("einzelreihungKomponente", {
     controller: "EinzelreihungsController",
     bindings: {
         sportlerInnenName: "@",
-        plaetze: "<"
+        plaetze: "<",
+        tnPlatziert: "&", //Ausgangs bindings werden mit & geschrieben
+        tnUnplatziert: "&",
+
 
     }
 });
 
 app.controller("EinzelreihungsController", function () {
-
-
-
+    /**
+     * Der Teilnehmerin wurde ein Platz zugeordnet
+     */
     this.remove = () => {
-        this.plaetze.splice(this.plaetze.indexOf(this.platz), 1)
+        this.tnPlatziert({p: this.platz});
     }
+    /**
+     * Die Platzierung der Teilenhmerin wurde entfernt
+     */
     this.add = () => {
-        this.plaetze.push(this.platz);
-        this.plaetze.sort();
+        this.tnUnplatziert({p: this.platz});
         delete this.platz;
     }
 });
